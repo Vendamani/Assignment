@@ -1,0 +1,223 @@
+1. Write a method that takes a String and returns a string of the same length containing the ‘X’ character in all positions except the last four positions. The character in the last 4 positions must be the same as in the original string, for example if the argument is “888954254” then the return value should be “XXXX5678”.
+package com.example.mytrys;
+ public class Second {
+
+public static void main(String[] args) {
+		String value = "888954254";
+                        String str1 = new StringBuilder(value)
+.replace(0, value.length() -4, new String(new char[value.length() - 4]).replace("\0", "x")).toString();
+		System.out.println(str1);
+		}
+
+}
+2. Implement the same method as above but with a String Builder as the Input Parameter.
+ package com.example.mytrys;
+
+public class Second {
+	static String mask(String input) {
+	    return input.replaceAll(".(?=.{4})", "X");
+	}
+
+	public static void main(String[] args) {
+		System.out.println(""+mask("888954254"));
+	}
+		
+}
+4. Use Enhanced for loop to print alternate elements of an array, using enhanced for loop try to print the elements in reverse order.
+(i)package com.example.mytrys;
+
+public class AlternateElements {
+	static void printArray(int[] arr, int N) {
+
+		for (int i = 0; i < N; i += 2) {
+			System.out.print(arr[i] + " ");
+		}
+	}
+
+	public static void main(String[] args) {
+		int[] arr = { 9, 5, 4, 6, 7, 8 };
+		int N = arr.length;
+
+		printArray(arr, N);
+	}
+}
+(ii)public class ReverseOrder {
+public static void main(String[] args) {
+    int[] arr = {9,7,8,7,4,6,2,6,4};
+    System.out.println("Reverse Order");
+    for (int i=arr.length; i > 0; i--){
+    	
+        System.out.print(arr[i-1]+" ");
+    }
+   
+}}
+5. Order of the access modifiers from the least restrictive to the most restrictive:
+                public > protected > default > private
+8. What are the different states of a thread and when do the state transitions occur.
+1.	New Thread
+2.	Runnable State
+3.	Blocked/Waiting state
+4.	Timed Waiting
+5.	Terminated State 
+9. Describe all the List,set,map implemented classes and their preferred usage in terms of storage ,retrival and null handling.
+  (I) List
+ import java.util.*;
+public class Sample{
+  
+    public static void main(String args[])
+    {
+        List<String> al = new ArrayList<>();
+        al.add("java");
+        al.add("c");
+        al.add("python");
+  
+        for (String course: al)
+            System.out.println(course);
+    }
+}
+(ii)Set
+import java.util.*;
+  
+public class SetExample {
+    
+    public static void main(String[] args)
+    {
+        
+        Set<String> Set = new HashSet<String>();
+        Set.add("one");
+        Set.add("two");
+        Set.add("three");
+        Set.add("four");
+        Set.add("five");
+        System.out.println(Set);
+    }
+}
+
+(iii)Map
+import java.util.*;
+  
+class MapExample {
+  
+    public static void main(String args[])
+    {
+  
+        Map<Integer, String> map
+            = new HashMap<Integer, String>();
+       map.put(100, "John");
+        map.put(101, "Victor");
+        map.put(102, "Rahan");
+  
+        // Elements can traverse in any order
+        for (Map.Entry m : map.entrySet()) {
+            System.out.println(m.getKey() + " "
+                               + m.getValue());
+        }
+    }
+}
+
+10. Comparable v/s Comparator in Java
+Comparable in Java
+•	Comparable interface is used to sort the objects with natural ordering.
+•	 Comparable interface compares “this” reference with the object specified.	
+•	Comparable is present in java.lang package.
+•	Comparable affects the original class, i.e., the actual class is modified.
+•	Comparable provides compareTo() method to sort elements.
+
+Java Comparable example
+public class Student implements Comparable {
+private String name;
+private int age;
+public Student(String name, int age) {
+this.name = name;
+this.age = age;
+}
+public int getAge() {
+return this.age;
+}
+public String getName() {
+return this.name;
+}
+@Override
+public String toString() {
+return "";
+}
+@Override
+public int compareTo(Student per) {
+if(this.age == per.age)
+return 0;
+else
+return this.age > per.age ? 1 : -1;
+}
+ 
+public static void main(String[] args) {
+Person e1 = new Person("Adam", 45);
+Person e2 = new Person("Steve", 60);
+int retval = e1.compareTo(e2);
+ 
+switch(retval) {
+case -1: {
+System.out.println("The " + e2.getName() + " is older!");
+break;
+}
+ 
+case 1: {
+System.out.println("The " + e1.getName() + " is older!");
+break;
+}
+ 
+default:
+System.out.println("The two persons are of the same age!");
+ 
+}
+}
+}
+
+Comparator in Java
+•	Comparator in Java is used to sort attributes of different objects.
+•	Comparator in Java compares two different class objects provided.
+•	A Comparator is present in the java.util package.
+•	Comparator doesn’t affect the original class.
+•	Comparator provides compare() method, equals() method to sort elements.
+import java.util.Comparator;
+ 
+public class School {
+private int num_of_students;
+private String name;
+public Company(String name, int num_of_students) {
+this.name = name;
+this.num_of_students = num_of_students;
+}
+public int getNumOfStudents() {
+return this.num_of_students;
+}
+public String getName() {
+return this.name;
+}
+}
+public class SortSchools implements Comparator {
+@Override
+public int compare(School sch1, School sch2) {
+if(sch1.getNumOfStudents()== sch2.getNumOfStudents())
+return 0;
+else
+return sch1.getNumOfStudents() > sch2.getNumOfStudents() ? 1 : -1;
+}
+public static void main(String[] args) {
+School sch1 = new School("sch1", 20);
+School sch2 = new School("sch2", 15);
+SortSchools sortSch = new SortSchools();
+int retval = sortSch.compare(sch1, sch2);
+switch(retval) {
+case -1: {
+System.out.println("The " + sch2.getName() + " is bigger!");
+break;
+}
+case 1: {
+System.out.println("The " + sch1.getName() + " is bigger!");
+break;
+}
+default:
+System.out.println("The two schools are of the same size!");
+}
+}
+}
