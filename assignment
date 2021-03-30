@@ -221,7 +221,7 @@ System.out.println("The two schools are of the same size!");
 }
 }
 }
-package com.example.mytrys;
+6.package com.example.mytrys;
 
 import java.io.*;
 import java.util.Scanner;
@@ -252,7 +252,7 @@ public class Vowels {
 
 		return vowelCount;
 	}}
-package com.example.mytrys;
+7.package com.example.mytrys;
 
 import java.io.File;
 import java.io.IOException;
@@ -274,3 +274,35 @@ public class CreateFile {
 		}
 	}
 }
+3.package com.example.mytrys;
+
+public class ConcatExample {
+	public static void main(String args[]) {
+		 //concatenation
+		StringBuilder sb = new StringBuilder();
+	  System.out.println(sb.append("java").append(" programming").toString()); 
+		 //contain few nulls
+		String str[] = { " java ", null, " c++ ", "c", null };
+		for (String temp : str) {
+
+			if (temp != null) {
+				sb.append(temp);
+			}
+		}
+
+		System.out.println(sb);
+	}
+		// only contain nulls
+		String str[] = { null, null, null, null, null };
+		for (String temp : str) {
+
+			if (temp != null) {
+				sb.append(temp);
+			}
+		}
+
+		System.out.println(sb);
+	}
+
+}
+
